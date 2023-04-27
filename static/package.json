@@ -1,0 +1,9 @@
+{
+  "name": "static",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "npx tsc --project tsconfig.json",
+    "build:watch": "npx tsc --project tsconfig.json --watch"
+  },
+  "license": "MIT"
+}

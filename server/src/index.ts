@@ -6,8 +6,12 @@ dotenv.config();
 const app: Express = express();
 const port = process.env.PORT;
 
+app.use(express.static(`${__dirname}/static`));
+
 app.get('/', (req: Request, res: Response) => {
-  res.send('Charybdis send best regards');
+  res.sendFile('index.html', {
+    root: `${__dirname}/..`,
+  });
 });
 
 app.listen(port, () => {
