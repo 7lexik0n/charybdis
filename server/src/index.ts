@@ -9,8 +9,8 @@ const port = process.env.PORT;
 app.use(express.static(`${__dirname}/static`));
 
 app.get('/', (req: Request, res: Response) => {
-  res.sendFile('index.html', {
-    root: `${__dirname}/..`,
+  res.sendFile('static/index.html', {
+    root: `${__dirname}`,
   });
 });
 

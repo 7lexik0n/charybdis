@@ -1,5 +1,7 @@
 node_modules
-dist
+server/dist
+static/node_modules
+static/dist
 
 .idea
 .env
