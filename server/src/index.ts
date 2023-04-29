@@ -2,7 +2,8 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import http from 'http';
 import Websocket from 'ws';
-import { IExtWebSocket } from './types';
+import { IExtWebSocket, IWsMessage } from './types';
+import { switchWsMessage } from './wsProcess';
 
 dotenv.config();
 
@@ -28,9 +29,16 @@ wss.on('connection', (ws: Websocket) => {
     extWs.isAlive = true;
   });
 
-  ws.on('message', (message: string) => {
-    ws.send(`Hello, you ask -> ${message}`);
-    ws.send(`Charybdis is there!`);
+  ws.on('message', async (message: string) => {
+    const data = JSON.parse(message) as IWsMessage;
+
+    try {
+      const answer = await switchWsMessage(data);
+      ws.send(answer);
+    } catch (e) {
+      console.log(e);
+      ws.send(`Puppeteer failed :(`);
+    }
   });
 
   ws.send(`Hi there, I am a Charybdis WebSocket server`);

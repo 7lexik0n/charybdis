@@ -2,4 +2,20 @@ import Websocket from 'ws';
 
 export interface IExtWebSocket extends Websocket {
   isAlive: boolean;
-}
+};
+
+export enum ECommands {
+  TEST = 'test',
+};
+
+export type TPayloadItem = string | number | string[] | number[] | {};
+
+export interface IWsMessage {
+  type: ECommands;
+  payload: Record<string, TPayloadItem>;
+};
+
+export interface IWsAnswer {
+  message: string;
+  payload?: Record<string, TPayloadItem>
+};

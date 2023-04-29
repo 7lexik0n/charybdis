@@ -7,7 +7,9 @@ import webSocket from './WebSocket';
 const sendMessage = () => {
   if (webSocket.OPEN) {
     console.log(`[ws:client] Отправляем данные на сервер`);
-    webSocket.send("Is anybody here?");
+    webSocket.send(JSON.stringify({
+      type: 'test',
+    }));
   }
 };
 
