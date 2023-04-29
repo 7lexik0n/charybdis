@@ -9,7 +9,6 @@ module.exports = {
     },
     'react-vendors': ['react', 'react-dom']
   },
-
   mode: "development",
   output: {
     path: path.resolve(__dirname, `../server/dist/static`),
@@ -28,4 +27,5 @@ module.exports = {
       },
     ],
   },
+  devtool: 'inline-source-map',
 };

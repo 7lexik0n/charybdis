@@ -4,7 +4,7 @@
   "scripts": {
     "build": "npx tsc --project tsconfig.json",
     "build:watch": "npx tsc --project tsconfig.json --watch",
-    "dev": "concurrently \"npm run build:watch\" \"npx webpack-cli --watch\""
+    "dev:client": "concurrently \"npm run build:watch\" \"npx webpack-cli --watch\""
   },
   "license": "MIT",
   "dependencies": {
