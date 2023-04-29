@@ -22,7 +22,7 @@ export const goTo = async (page: Page, url: string) => {
   await page.goto(url);
 };
 
-export const setViewport = async (page: Page, { width = 1024, height = 1024 }: { width?: number, height?: number }) => {
+export const setViewport = async (page: Page, { width = 1024, height = 1024 }: { width?: number; height?: number }) => {
   await page.setViewport({ width, height });
 };
 
@@ -38,5 +38,3 @@ export const waitForEl = async (page: Page, sel: string) => {
 export const clickOnEl = async (page: Page, sel: string) => {
   await page.click(sel);
 };
-
-

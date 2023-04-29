@@ -1,0 +1,4 @@
+node_modules
+server/dist
+static/dist
+static/node_modules

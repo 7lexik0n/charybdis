@@ -23,7 +23,7 @@ export const switchWsMessage = async (data: IWsMessage): Promise<string> => {
       const textEl = await waitForEl(page, 'text/Customize and automate');
       let title = `Default title`;
       if (textEl) {
-        const fullTitle = await textEl.evaluate(el => el.textContent);
+        const fullTitle = await textEl.evaluate((el) => el.textContent);
         title = fullTitle ? fullTitle : title;
       }
 
