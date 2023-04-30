@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   entry: {
     'app': {
-      import: './dist/index.js',
+      import: './dist/static/index.js',
       dependOn: 'react-vendors',
     },
     'react-vendors': ['react', 'react-dom'],

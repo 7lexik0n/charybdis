@@ -2,7 +2,8 @@ import express, { Express, Request, Response } from 'express';
 import dotenv from 'dotenv';
 import http from 'http';
 import Websocket from 'ws';
-import { IExtWebSocket, IWsMessage } from './types';
+import { IExtWebSocket } from './types';
+import { IWsMessage } from './../../shared/wsTypes';
 import { switchWsMessage } from './wsProcess';
 
 dotenv.config();
@@ -10,11 +11,11 @@ dotenv.config();
 const port = process.env.PORT;
 const app: Express = express();
 
-app.use(express.static(`${__dirname}/static`));
+app.use(express.static(`${__dirname}/../../static`));
 
 app.get('/', (req: Request, res: Response) => {
   res.sendFile('static/index.html', {
-    root: `${__dirname}`,
+    root: `${__dirname}/../../`,
   });
 });
 
@@ -34,6 +35,7 @@ wss.on('connection', (ws: Websocket) => {
 
     try {
       const answer = await switchWsMessage(data);
+      console.log(answer);
       ws.send(answer);
     } catch (e) {
       console.log(e);
@@ -41,7 +43,7 @@ wss.on('connection', (ws: Websocket) => {
     }
   });
 
-  ws.send(`Hi there, I am a Charybdis WebSocket server`);
+  ws.send(JSON.stringify({ message: `Hi there, I am a Charybdis WebSocket server` }));
 });
 
 const connectionInterval = setInterval(() => {

@@ -1,3 +1,5 @@
+import { IWsAnswer } from '../shared/wsTypes';
+
 export const openConnection = () => {
   return new WebSocket(`ws://localhost:8000`);
 };
@@ -8,8 +10,13 @@ webSocket.onopen = () => {
   console.log('[ws:client] Соединение установлено');
 };
 
-webSocket.onmessage = (e) => {
-  console.log(`[ws:server] ${e.data}`);
+webSocket.onmessage = (e: MessageEvent<string>) => {
+  const data = JSON.parse(e.data) as IWsAnswer;
+  console.log(`[ws:server] ${data.message}`);
+
+  if (data.payload) {
+    console.log(`[ws:server] ${JSON.stringify(data.payload)}`);
+  }
 };
 
 webSocket.onclose = () => {

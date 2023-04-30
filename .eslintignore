@@ -2,3 +2,6 @@ node_modules
 static/node_modules
 static/dist
 server/dist
+
+*.config.js
+*.json

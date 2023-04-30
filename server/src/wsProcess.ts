@@ -1,4 +1,4 @@
-import { ECommands, IWsAnswer, IWsMessage } from './types';
+import { ECommands, IWsAnswer, IWsMessage } from './../../shared/wsTypes';
 import { clickOnEl, closeBrowser, getBrowser, getPage, goTo, setViewport, typeInEl, waitForEl } from './puppeteerCore';
 
 export const switchWsMessage = async (data: IWsMessage): Promise<string> => {
@@ -28,6 +28,9 @@ export const switchWsMessage = async (data: IWsMessage): Promise<string> => {
       }
 
       result.message = title;
+      result.payload = {
+        test: 'test',
+      };
       await closeBrowser(browser);
       break;
     }

@@ -1,15 +1,16 @@
 import { createRoot } from 'react-dom/client';
 import React from 'react';
 import { Button, Typography, Container } from '@mui/material';
-import styles from './../App.module.css';
+import styles from './../../App.module.css';
 import webSocket from './WebSocket';
+import { ECommands } from '../shared/wsTypes';
 
 const sendMessage = () => {
   if (webSocket.OPEN) {
     console.log(`[ws:client] Отправляем данные на сервер`);
     webSocket.send(
       JSON.stringify({
-        type: 'test',
+        type: ECommands.TEST,
       }),
     );
   }

@@ -9,7 +9,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "outDir": "./server/dist",
-    "rootDirs": ["./server/src"]
+    "rootDirs": ["./server"],
   },
-  "include": ["./server/src/**/*"]
+  "include": ["./server/src/**/*"],
 }

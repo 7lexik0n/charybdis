@@ -6,7 +6,7 @@
     "build": "npx tsc --project tsconfig.json",
     "build:watch": "npx tsc --project tsconfig.json --watch",
     "start": "node server/dist/index.js",
-    "nodemon": "nodemon -q server/dist/index.js",
+    "nodemon": "nodemon -q server/dist/server/src/index.js",
     "dev:server": "concurrently \"npm run build:watch\" \"npm run nodemon\"",
     "load:deps": "npm --prefix ./static/ install && npm install",
     "dev": "npm --prefix ./static/ run build && concurrently \"npm --prefix ./static/ run dev:client\" \"npm run dev:server\"",
